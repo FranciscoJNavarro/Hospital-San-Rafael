@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<ArrayOfRegistroMedicamento xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <RegistroMedicamento>
+    <Id>cdcff535-9521-486a-a471-8c3e43c0a88b</Id>
+    <NombreMedicamento>Paracetamol</NombreMedicamento>
+    <DosisMg>2500.001</DosisMg>
+    <FechaHoraAdministracion>2026-11-08T22:08:00</FechaHoraAdministracion>
+    <FrecuenciaDiaria>3</FrecuenciaDiaria>
+    <RequiereReceta>false</RequiereReceta>
+    <FechaHoraRegistro>2026-11-08T22:12:56.9989976-06:00</FechaHoraRegistro>
+  </RegistroMedicamento>
+</ArrayOfRegistroMedicamento>
