@@ -1,0 +1,21 @@
+﻿<?xml version="1.0"?>
+<ArrayOfUsuario xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Usuario>
+    <NombreUsuario>enfermera1</NombreUsuario>
+    <NombreCompleto>María López (Enfermería)</NombreCompleto>
+    <Rol>Enfermero</Rol>
+    <HashContrasena>MBiQoZkDOGwdumITUbkkawGIqgKSLaKmtCY62fJ+9u0=</HashContrasena>
+    <Sal>U9Uqzx7qrGMVYey2LDibzg==</Sal>
+    <Iteraciones>100000</Iteraciones>
+    <Activo>true</Activo>
+  </Usuario>
+  <Usuario>
+    <NombreUsuario>medico1</NombreUsuario>
+    <NombreCompleto>Dr. Juan Pérez (Médico tratante)</NombreCompleto>
+    <Rol>Medico</Rol>
+    <HashContrasena>FmzZyGGiLmnjXrIS8ZKQE+XtE5fRt5AvHJOb2GFn1TM=</HashContrasena>
+    <Sal>v4RL58mqUPNeJIlyaPq1VA==</Sal>
+    <Iteraciones>100000</Iteraciones>
+    <Activo>true</Activo>
+  </Usuario>
+</ArrayOfUsuario>

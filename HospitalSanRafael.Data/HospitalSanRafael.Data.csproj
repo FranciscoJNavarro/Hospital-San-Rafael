@@ -42,6 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IRegistroMedicamentoRepository.cs" />
+    <Compile Include="AlmacenamientoXml.cs" />
+    <Compile Include="IUsuarioRepository.cs" />
+    <Compile Include="UsuarioXmlRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegistroMedicamentoXmlRepository.cs" />
   </ItemGroup>

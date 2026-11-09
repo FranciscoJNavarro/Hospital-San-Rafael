@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace HospitalSanRafael.Entities
 {
+    /// <summary>Resultado final de intentar guardar un registro (RF-04).</summary>
     public class ResultadoOperacion
     {
         public bool Exito { get; private set; }
@@ -32,6 +29,13 @@ namespace HospitalSanRafael.Entities
                 Mensaje = mensaje,
                 Errores = errores ?? new Dictionary<string, string>()
             };
+        }
+
+        /// <summary>Atajo para un fallo con un solo mensaje general (no ligado a un campo).</summary>
+        public static ResultadoOperacion FallidoGeneral(string mensajeParaUsuario, string mensaje)
+        {
+            var errores = new Dictionary<string, string> { { CamposRegistro.General, mensajeParaUsuario } };
+            return Fallido(errores, mensaje);
         }
     }
 }

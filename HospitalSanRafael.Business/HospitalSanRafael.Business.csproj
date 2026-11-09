@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -42,8 +43,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IReloj.cs" />
+    <Compile Include="LectorConfiguracion.cs" />
+    <Compile Include="Logging\ArchivoLogger.cs" />
+    <Compile Include="Logging\ILogger.cs" />
+    <Compile Include="Seguridad\ConfiguracionSeguridad.cs" />
+    <Compile Include="Seguridad\HashContrasena.cs" />
+    <Compile Include="Seguridad\ServicioAutenticacion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegistroMedicamentoService.cs" />
+    <Compile Include="ReglasNegocio.cs" />
     <Compile Include="ValidadorRegistroMedicamento.cs" />
   </ItemGroup>
   <ItemGroup>

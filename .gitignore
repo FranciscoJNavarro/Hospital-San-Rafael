@@ -361,3 +361,9 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# ===== Hospital San Rafael =====
+# Datos capturados y bitácoras se generan al ejecutar; no deben publicarse en el repositorio
+**/App_Data/registros_medicamentos.xml
+**/App_Data/Logs/
+**/App_Data/*.tmp

@@ -46,6 +46,9 @@
     <Compile Include="RegistroMedicamento.cs" />
     <Compile Include="ResultadoOperacion.cs" />
     <Compile Include="ResultadoValidacion.cs" />
+    <Compile Include="ResultadoAutenticacion.cs" />
+    <Compile Include="RolesUsuario.cs" />
+    <Compile Include="Usuario.cs" />
     <Compile Include="SolicitudRegistroMedicamento.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

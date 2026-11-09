@@ -19,16 +19,34 @@ namespace Hospital_San_Rafael
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// Para modificarlo, mueva la declaración del campo del archivo de diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+
+        /// <summary>
+        /// Control litUsuario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo de diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litUsuario;
+
+        /// <summary>
+        /// Control btnCerrarSesion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo de diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCerrarSesion;
 
         /// <summary>
         /// Control pnlErrorGeneral.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// Para modificarlo, mueva la declaración del campo del archivo de diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlErrorGeneral;
 
@@ -37,7 +55,7 @@ namespace Hospital_San_Rafael
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// Para modificarlo, mueva la declaración del campo del archivo de diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litErrorGeneral;
 
@@ -46,7 +64,7 @@ namespace Hospital_San_Rafael
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// Para modificarlo, mueva la declaración del campo del archivo de diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlFormulario;
 
@@ -55,16 +73,34 @@ namespace Hospital_San_Rafael
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// Para modificarlo, mueva la declaración del campo del archivo de diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNombre;
+
+        /// <summary>
+        /// Control rfvNombre.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo de diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvNombre;
+
+        /// <summary>
+        /// Control revNombre.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo de diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revNombre;
 
         /// <summary>
         /// Control lblErrNombre.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// Para modificarlo, mueva la declaración del campo del archivo de diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblErrNombre;
 
@@ -73,16 +109,43 @@ namespace Hospital_San_Rafael
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// Para modificarlo, mueva la declaración del campo del archivo de diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDosis;
+
+        /// <summary>
+        /// Control rfvDosis.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo de diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDosis;
+
+        /// <summary>
+        /// Control cvDosisMinima.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo de diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator cvDosisMinima;
+
+        /// <summary>
+        /// Control cvDosisMaxima.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo de diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator cvDosisMaxima;
 
         /// <summary>
         /// Control lblErrDosis.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// Para modificarlo, mueva la declaración del campo del archivo de diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblErrDosis;
 
@@ -91,16 +154,34 @@ namespace Hospital_San_Rafael
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// Para modificarlo, mueva la declaración del campo del archivo de diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtFechaHora;
+
+        /// <summary>
+        /// Control rfvFechaHora.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo de diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvFechaHora;
+
+        /// <summary>
+        /// Control cvFechaHora.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo de diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator cvFechaHora;
 
         /// <summary>
         /// Control lblErrFechaHora.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// Para modificarlo, mueva la declaración del campo del archivo de diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblErrFechaHora;
 
@@ -109,16 +190,34 @@ namespace Hospital_San_Rafael
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// Para modificarlo, mueva la declaración del campo del archivo de diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtFrecuencia;
+
+        /// <summary>
+        /// Control rfvFrecuencia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo de diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvFrecuencia;
+
+        /// <summary>
+        /// Control rvFrecuencia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo de diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator rvFrecuencia;
 
         /// <summary>
         /// Control lblErrFrecuencia.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// Para modificarlo, mueva la declaración del campo del archivo de diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblErrFrecuencia;
 
@@ -127,16 +226,25 @@ namespace Hospital_San_Rafael
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// Para modificarlo, mueva la declaración del campo del archivo de diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButtonList rblReceta;
+
+        /// <summary>
+        /// Control rfvReceta.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo de diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvReceta;
 
         /// <summary>
         /// Control lblErrReceta.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// Para modificarlo, mueva la declaración del campo del archivo de diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblErrReceta;
 
@@ -145,7 +253,7 @@ namespace Hospital_San_Rafael
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// Para modificarlo, mueva la declaración del campo del archivo de diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnRevisar;
 
@@ -154,7 +262,7 @@ namespace Hospital_San_Rafael
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// Para modificarlo, mueva la declaración del campo del archivo de diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlConfirmacion;
 
@@ -163,7 +271,7 @@ namespace Hospital_San_Rafael
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// Para modificarlo, mueva la declaración del campo del archivo de diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litResNombre;
 
@@ -172,7 +280,7 @@ namespace Hospital_San_Rafael
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// Para modificarlo, mueva la declaración del campo del archivo de diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litResDosis;
 
@@ -181,7 +289,7 @@ namespace Hospital_San_Rafael
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// Para modificarlo, mueva la declaración del campo del archivo de diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litResFecha;
 
@@ -190,7 +298,7 @@ namespace Hospital_San_Rafael
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// Para modificarlo, mueva la declaración del campo del archivo de diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litResFrecuencia;
 
@@ -199,7 +307,7 @@ namespace Hospital_San_Rafael
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// Para modificarlo, mueva la declaración del campo del archivo de diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litResReceta;
 
@@ -208,7 +316,7 @@ namespace Hospital_San_Rafael
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// Para modificarlo, mueva la declaración del campo del archivo de diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litMensajeConfirmacion;
 
@@ -217,7 +325,7 @@ namespace Hospital_San_Rafael
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// Para modificarlo, mueva la declaración del campo del archivo de diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnConfirmar;
 
@@ -226,7 +334,7 @@ namespace Hospital_San_Rafael
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// Para modificarlo, mueva la declaración del campo del archivo de diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCorregir;
 
@@ -235,7 +343,7 @@ namespace Hospital_San_Rafael
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// Para modificarlo, mueva la declaración del campo del archivo de diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlExito;
 
@@ -244,7 +352,7 @@ namespace Hospital_San_Rafael
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// Para modificarlo, mueva la declaración del campo del archivo de diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litMensajeExito;
 
@@ -253,7 +361,7 @@ namespace Hospital_San_Rafael
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// Para modificarlo, mueva la declaración del campo del archivo de diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litExFolio;
 
@@ -262,7 +370,7 @@ namespace Hospital_San_Rafael
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// Para modificarlo, mueva la declaración del campo del archivo de diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litExNombre;
 
@@ -271,7 +379,7 @@ namespace Hospital_San_Rafael
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// Para modificarlo, mueva la declaración del campo del archivo de diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litExDosis;
 
@@ -280,7 +388,7 @@ namespace Hospital_San_Rafael
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// Para modificarlo, mueva la declaración del campo del archivo de diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litExFecha;
 
@@ -289,7 +397,7 @@ namespace Hospital_San_Rafael
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// Para modificarlo, mueva la declaración del campo del archivo de diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litExFrecuencia;
 
@@ -298,16 +406,25 @@ namespace Hospital_San_Rafael
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// Para modificarlo, mueva la declaración del campo del archivo de diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litExReceta;
+
+        /// <summary>
+        /// Control litExRegistradoPor.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo de diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litExRegistradoPor;
 
         /// <summary>
         /// Control litExRegistro.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// Para modificarlo, mueva la declaración del campo del archivo de diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litExRegistro;
 
@@ -316,7 +433,7 @@ namespace Hospital_San_Rafael
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// Para modificarlo, mueva la declaración del campo del archivo de diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnNuevo;
     }

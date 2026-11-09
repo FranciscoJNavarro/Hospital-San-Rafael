@@ -1,31 +1,34 @@
-﻿using HospitalSanRafael.Entities;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Globalization;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+using HospitalSanRafael.Entities;
 
 namespace HospitalSanRafael.Business
 {
+    /// <summary>
+    /// Implementa las reglas de RF-02. Es la validación definitiva del sistema:
+    /// se ejecuta siempre en el servidor, aunque el navegador ya haya validado.
+    /// Cada campo tiene su propio método público para poder probarlo por separado.
+    /// </summary>
     public class ValidadorRegistroMedicamento
     {
-        public const double DosisMaximaMg = 5000;
-        public const int FrecuenciaMinima = 1;
-        public const int FrecuenciaMaxima = 24;
-        public const int VentanaHorasPasado = 24;
-        public const int LongitudMaximaNombre = 100;
+        /// <summary>
+        /// Solo letras (incluye acentos, ñ y ü) separadas por espacios.
+        /// Es público para que el front-end use exactamente el mismo patrón.
+        /// </summary>
+        public const string PatronNombreMedicamento =
+            @"^\s*[A-Za-zÁÉÍÓÚáéíóúÑñÜü]+(\s+[A-Za-zÁÉÍÓÚáéíóúÑñÜü]+)*\s*$";
 
-        // Solo letras (incluye acentos, ñ, ü) separadas por un espacio
-        private static readonly Regex RegexNombre =
-            new Regex(@"^[A-Za-zÁÉÍÓÚáéíóúÑñÜü]+( [A-Za-zÁÉÍÓÚáéíóúÑñÜü]+)*$");
+        // Límite técnico (no de negocio) para no procesar textos numéricos absurdamente largos
+        private const int LongitudMaximaTextoNumerico = 10;
+
+        private static readonly Regex RegexNombre = new Regex(PatronNombreMedicamento);
 
         // Solo dígitos con punto decimal opcional: rechaza negativos, comas, notación científica, etc.
         private static readonly Regex RegexDecimal = new Regex(@"^\d+(\.\d+)?$");
         private static readonly Regex RegexEntero = new Regex(@"^\d+$");
 
-        private static readonly string[] FormatosFecha =
+        private static readonly string[] FormatosFechaAceptados =
         {
             "yyyy-MM-ddTHH:mm",      // formato del control datetime-local de HTML5
             "yyyy-MM-ddTHH:mm:ss",
@@ -33,11 +36,14 @@ namespace HospitalSanRafael.Business
         };
 
         private readonly IReloj _reloj;
+        private readonly ReglasNegocio _reglas;
 
-        public ValidadorRegistroMedicamento(IReloj reloj)
+        public ValidadorRegistroMedicamento(IReloj reloj, ReglasNegocio reglas)
         {
             if (reloj == null) throw new ArgumentNullException("reloj");
+            if (reglas == null) throw new ArgumentNullException("reglas");
             _reloj = reloj;
+            _reglas = reglas;
         }
 
         public ResultadoValidacion Validar(SolicitudRegistroMedicamento solicitud)
@@ -52,25 +58,15 @@ namespace HospitalSanRafael.Business
 
             string nombre;
             double dosis;
-            DateTime fecha;
+            DateTime fechaHora;
             int frecuencia;
-            bool receta;
+            bool requiereReceta;
 
-            string error;
-            if ((error = ValidarNombre(solicitud.NombreMedicamento, out nombre)) != null)
-                resultado.AgregarError(CamposRegistro.NombreMedicamento, error);
-
-            if ((error = ValidarDosis(solicitud.DosisMg, out dosis)) != null)
-                resultado.AgregarError(CamposRegistro.DosisMg, error);
-
-            if ((error = ValidarFechaHora(solicitud.FechaHoraAdministracion, out fecha)) != null)
-                resultado.AgregarError(CamposRegistro.FechaHoraAdministracion, error);
-
-            if ((error = ValidarFrecuencia(solicitud.FrecuenciaDiaria, out frecuencia)) != null)
-                resultado.AgregarError(CamposRegistro.FrecuenciaDiaria, error);
-
-            if ((error = ValidarReceta(solicitud.RequiereReceta, out receta)) != null)
-                resultado.AgregarError(CamposRegistro.RequiereReceta, error);
+            AgregarSiHayError(resultado, CamposRegistro.NombreMedicamento, ValidarNombre(solicitud.NombreMedicamento, out nombre));
+            AgregarSiHayError(resultado, CamposRegistro.DosisMg, ValidarDosis(solicitud.DosisMg, out dosis));
+            AgregarSiHayError(resultado, CamposRegistro.FechaHoraAdministracion, ValidarFechaHora(solicitud.FechaHoraAdministracion, out fechaHora));
+            AgregarSiHayError(resultado, CamposRegistro.FrecuenciaDiaria, ValidarFrecuencia(solicitud.FrecuenciaDiaria, out frecuencia));
+            AgregarSiHayError(resultado, CamposRegistro.RequiereReceta, ValidarReceta(solicitud.RequiereReceta, out requiereReceta));
 
             if (resultado.EsValido)
             {
@@ -78,16 +74,16 @@ namespace HospitalSanRafael.Business
                 {
                     NombreMedicamento = nombre,
                     DosisMg = dosis,
-                    FechaHoraAdministracion = fecha,
+                    FechaHoraAdministracion = fechaHora,
                     FrecuenciaDiaria = frecuencia,
-                    RequiereReceta = receta
+                    RequiereReceta = requiereReceta
                 };
             }
 
             return resultado;
         }
 
-        /// <returns>Mensaje de error, o null si es válido.</returns>
+        /// <returns>Mensaje de error, o null si el valor es válido.</returns>
         public string ValidarNombre(string valor, out string nombreNormalizado)
         {
             nombreNormalizado = null;
@@ -95,10 +91,11 @@ namespace HospitalSanRafael.Business
             if (string.IsNullOrWhiteSpace(valor))
                 return "El nombre del medicamento es obligatorio.";
 
+            // Se quitan espacios sobrantes para guardar siempre el mismo formato
             string normalizado = Regex.Replace(valor.Trim(), @"\s+", " ");
 
-            if (normalizado.Length > LongitudMaximaNombre)
-                return "El nombre del medicamento no puede exceder " + LongitudMaximaNombre + " caracteres.";
+            if (normalizado.Length > _reglas.LongitudMaximaNombre)
+                return "El nombre del medicamento no puede exceder " + _reglas.LongitudMaximaNombre + " caracteres.";
 
             if (!RegexNombre.IsMatch(normalizado))
                 return "El nombre del medicamento solo puede contener letras y espacios (sin números ni caracteres especiales).";
@@ -107,6 +104,7 @@ namespace HospitalSanRafael.Business
             return null;
         }
 
+        /// <returns>Mensaje de error, o null si el valor es válido.</returns>
         public string ValidarDosis(string valor, out double dosis)
         {
             dosis = 0;
@@ -116,7 +114,7 @@ namespace HospitalSanRafael.Business
 
             string texto = valor.Trim();
 
-            if (texto.Length > 10 || !RegexDecimal.IsMatch(texto) ||
+            if (texto.Length > LongitudMaximaTextoNumerico || !RegexDecimal.IsMatch(texto) ||
                 !double.TryParse(texto, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out dosis))
             {
                 dosis = 0;
@@ -126,38 +124,40 @@ namespace HospitalSanRafael.Business
             if (double.IsNaN(dosis) || double.IsInfinity(dosis) || dosis <= 0)
                 return "La dosis debe ser mayor a 0 mg.";
 
-            if (dosis > DosisMaximaMg)
-                return "La dosis no puede exceder " + DosisMaximaMg.ToString("N0", CultureInfo.InvariantCulture) +
+            if (dosis > _reglas.DosisMaximaMg)
+                return "La dosis no puede exceder " + _reglas.DosisMaximaMg.ToString("N0", CultureInfo.InvariantCulture) +
                        " mg (límite de seguridad).";
 
             return null;
         }
 
-        public string ValidarFechaHora(string valor, out DateTime fecha)
+        /// <returns>Mensaje de error, o null si el valor es válido.</returns>
+        public string ValidarFechaHora(string valor, out DateTime fechaHora)
         {
-            fecha = DateTime.MinValue;
+            fechaHora = DateTime.MinValue;
 
             if (string.IsNullOrWhiteSpace(valor))
                 return "La fecha y hora de administración es obligatoria.";
 
-            if (!DateTime.TryParseExact(valor.Trim(), FormatosFecha, CultureInfo.InvariantCulture,
-                                        DateTimeStyles.None, out fecha))
+            if (!DateTime.TryParseExact(valor.Trim(), FormatosFechaAceptados, CultureInfo.InvariantCulture,
+                                        DateTimeStyles.None, out fechaHora))
             {
-                fecha = DateTime.MinValue;
+                fechaHora = DateTime.MinValue;
                 return "La fecha y hora no tiene un formato válido.";
             }
 
             DateTime ahora = _reloj.Ahora;
 
-            if (fecha > ahora)
+            if (fechaHora > ahora)
                 return "La fecha y hora de administración no puede ser futura.";
 
-            if (fecha < ahora.AddHours(-VentanaHorasPasado))
-                return "La fecha y hora no puede tener más de " + VentanaHorasPasado + " horas en el pasado.";
+            if (fechaHora < ahora.AddHours(-_reglas.VentanaHorasPasado))
+                return "La fecha y hora no puede tener más de " + _reglas.VentanaHorasPasado + " horas en el pasado.";
 
             return null;
         }
 
+        /// <returns>Mensaje de error, o null si el valor es válido.</returns>
         public string ValidarFrecuencia(string valor, out int frecuencia)
         {
             frecuencia = 0;
@@ -167,19 +167,21 @@ namespace HospitalSanRafael.Business
 
             string texto = valor.Trim();
 
-            if (!RegexEntero.IsMatch(texto) ||
+            if (texto.Length > LongitudMaximaTextoNumerico || !RegexEntero.IsMatch(texto) ||
                 !int.TryParse(texto, NumberStyles.None, CultureInfo.InvariantCulture, out frecuencia))
             {
                 frecuencia = 0;
                 return "La frecuencia diaria debe ser un número entero (sin decimales).";
             }
 
-            if (frecuencia < FrecuenciaMinima || frecuencia > FrecuenciaMaxima)
-                return "La frecuencia diaria debe estar entre " + FrecuenciaMinima + " y " + FrecuenciaMaxima + ".";
+            if (frecuencia < _reglas.FrecuenciaMinimaDiaria || frecuencia > _reglas.FrecuenciaMaximaDiaria)
+                return "La frecuencia diaria debe estar entre " + _reglas.FrecuenciaMinimaDiaria +
+                       " y " + _reglas.FrecuenciaMaximaDiaria + ".";
 
             return null;
         }
 
+        /// <returns>Mensaje de error, o null si el valor es válido.</returns>
         public string ValidarReceta(bool? valor, out bool requiereReceta)
         {
             requiereReceta = false;
@@ -189,6 +191,12 @@ namespace HospitalSanRafael.Business
 
             requiereReceta = valor.Value;
             return null;
+        }
+
+        private static void AgregarSiHayError(ResultadoValidacion resultado, string campo, string mensajeError)
+        {
+            if (mensajeError != null)
+                resultado.AgregarError(campo, mensajeError);
         }
     }
 }

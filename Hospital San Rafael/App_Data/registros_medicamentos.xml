@@ -9,4 +9,14 @@
     <RequiereReceta>false</RequiereReceta>
     <FechaHoraRegistro>2026-11-08T22:12:56.9989976-06:00</FechaHoraRegistro>
   </RegistroMedicamento>
+  <RegistroMedicamento>
+    <Id>19caabcd-f7d0-4236-a742-03f390833324</Id>
+    <NombreMedicamento>Ibuprofeno</NombreMedicamento>
+    <DosisMg>3000</DosisMg>
+    <FechaHoraAdministracion>2026-11-08T23:30:00</FechaHoraAdministracion>
+    <FrecuenciaDiaria>4</FrecuenciaDiaria>
+    <RequiereReceta>false</RequiereReceta>
+    <FechaHoraRegistro>2026-11-08T23:36:19.3825285-06:00</FechaHoraRegistro>
+    <RegistradoPor>enfermera1</RegistradoPor>
+  </RegistroMedicamento>
 </ArrayOfRegistroMedicamento>
